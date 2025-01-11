@@ -1,0 +1,31 @@
+<h2 *ngIf="!data">New Contact</h2>
+<h2 *ngIf="data">Edit Contact</h2>
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" class="form-control" name="firstName" [(ngModel)]="contact.firstName" required>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" class="form-control" name="lastName" [(ngModel)]="contact.lastName" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input 
+      type="email" 
+      id="email" 
+      class="form-control" 
+      name="email" 
+      [(ngModel)]="contact.email" 
+      #email="ngModel"
+      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+      required>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+      <div *ngIf="email.errors?.['pattern']">Please enter a valid email address.</div>
+    </div>
+    <div *ngIf="emailError" class="alert alert-danger">{{ emailError }}</div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+</form>
