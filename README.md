@@ -25,7 +25,7 @@ This Contacts App is an Angular application for managing contacts. Users can add
 
 1. **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/FlyingNanobot/InterviewProject
     ```
 
 2. **Navigate to the project directory:**
@@ -45,7 +45,7 @@ This Contacts App is an Angular application for managing contacts. Users can add
 
 5. **Open your browser and navigate to:**
     ```
-    http://localhost:4200
+    https://localhost:4200
     ```
 
 ### Backend (ASP.NET Core Web API)
@@ -137,9 +137,9 @@ The backend Web API provides the following endpoints for managing contacts:
     },
     {
       "id": 2,
-      "firstName": "Satadal",
-      "lastName": "Ray",
-      "email": "ray.satadal94@gmail.com"
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane.doe@example.com"
     }
   ]
 
