@@ -1,0 +1,29 @@
+<h2 *ngIf="!contactData">New Contact</h2>
+<h2 *ngIf="contactData">Edit Contact</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" class="form-control" formControlName="firstName" required>
+    <div *ngIf="contactForm.controls['firstName'].touched && contactForm.controls['firstName'].invalid" class="alert alert-danger">
+      <div *ngIf="contactForm.controls['firstName'].errors?.['required']">First Name is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" class="form-control" formControlName="lastName" required>
+    <div *ngIf="contactForm.controls['lastName'].touched && contactForm.controls['lastName'].invalid" class="alert alert-danger">
+      <div *ngIf="contactForm.controls['lastName'].errors?.['required']">Last Name is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" class="form-control" formControlName="email" required>
+    <div *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].invalid" class="alert alert-danger">
+      <div *ngIf="contactForm.controls['email'].errors?.['required']">Email is required.</div>
+      <div *ngIf="contactForm.controls['email'].errors?.['pattern']">Please enter a valid email address.</div>
+    </div>
+    <div *ngIf="emailError" class="alert alert-danger">{{ emailError }}</div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+</form>
