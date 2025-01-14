@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Contacts App</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-primary" (click)="openAddEditContact()">NEW</button>
+        <div class="input-group" style="max-width: 300px;">
+            <input type="text" class="form-control" placeholder="Search" [formControl]="searchTextControl" #searchInput>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="searchContacts(searchTextControl.value)">Search</button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FIRSTNAME</th>
+                <th>LASTNAME</th>
+                <th>EMAIL</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of filteredContacts">
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.firstName }}</td>
+                <td>{{ contact.lastName }}</td>
+                <td>{{ contact.email }}</td>
+                <td><button class="btn btn-warning" (click)="openAddEditContact(contact)">EDIT</button></td>
+                <td><button class="btn btn-danger" (click)="confirmDelete(contact.id)">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  
